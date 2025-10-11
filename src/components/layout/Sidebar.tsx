@@ -13,38 +13,25 @@ function Sidebar() {
             <span className="menu-title">Dashboard</span>
           </Link>
         </li>
-        {/* <li className="nav-item">
-          <Link to={"/products"} className="nav-link">
-            <span className="icon-bg">
-              <i className="mdi mdi-shopping menu-icon"></i>
-            </span>
-            <span className="menu-title">Products</span>
-          </Link>
-        </li>
+        {/* Users */}
         <li className="nav-item">
-          <Link to={"/category"} className="nav-link">
-            <span className="icon-bg">
-              <i className="mdi mdi-format-list-bulleted menu-icon"></i>
-            </span>
-            <span className="menu-title">Category</span>
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to={"/users"} className="nav-link">
+          <Link to="users" className="nav-link">
             <span className="icon-bg">
               <i className="mdi mdi-account menu-icon"></i>
             </span>
             <span className="menu-title">Users</span>
           </Link>
         </li>
+
+        {/* Roles */}
         <li className="nav-item">
-          <Link to={"/rolls"} className="nav-link">
+          <Link to="/roles" className="nav-link">
             <span className="icon-bg">
-              <i className="mdi mdi-account-group menu-icon"></i>
+              <i className="mdi mdi-account-key menu-icon"></i>
             </span>
-            <span className="menu-title">Rolls</span>
+            <span className="menu-title">Roles</span>
           </Link>
-        </li> */}
+        </li>
 
         {/* Flight Management Section */}
         <li className="nav-item">
@@ -77,7 +64,6 @@ function Sidebar() {
           </div>
         </li>
 
-
         {/* Airlines Section */}
         <li className="nav-item">
           <a
@@ -96,19 +82,17 @@ function Sidebar() {
           <div className="collapse" id="airlines">
             <ul className="nav flex-column sub-menu">
               <li className="nav-item">
-                <Link to={'manage-airlines'} className="nav-link">
+                <Link to={"manage-airlines"} className="nav-link">
                   🛫 View Airlines
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to={'/add-airlines'} className="nav-link" >
+                <Link to={"/add-airlines"} className="nav-link">
                   ➕ Add Airlines
                 </Link>
               </li>
             </ul>
           </div>
-
-
         </li>
         {/* Airport Section */}
         <li className="nav-item">
@@ -128,21 +112,68 @@ function Sidebar() {
           <div className="collapse" id="airports">
             <ul className="nav flex-column sub-menu">
               <li className="nav-item">
-                <a className="nav-link" href="/airports/view">
+                <Link to={'/view/airports'} className="nav-link">
                   🛫 View Airports
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/airports/add">
+                <Link to={'/add/airports'} className="nav-link">
                   ➕ Add Airports
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
-
-
         </li>
 
+        <li className="nav-item">
+          <a
+            className="nav-link"
+            data-toggle="collapse"
+            href="#bookings"
+            aria-expanded="false"
+            aria-controls="bookings"
+          >
+            <span className="icon-bg">
+              <i className="mdi mdi-book-open-page-variant menu-icon"></i>
+            </span>
+            <span className="menu-title">Bookings</span>
+            <i className="menu-arrow"></i>
+          </a>
+          <div className="collapse" id="bookings">
+            <ul className="nav flex-column sub-menu">
+              <li className="nav-item">
+                <Link to={"/bookings"} className="nav-link">
+                  📄 View Bookings
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"/booking-flights"} className="nav-link">
+                  ✈️ Booking Flights
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        {/* Payments */}
+        <li className="nav-item">
+          <Link to="/payments" className="nav-link">
+            <span className="icon-bg">
+              <i className="mdi mdi-credit-card menu-icon"></i>
+            </span>
+            <span className="menu-title">Payments</span>
+          </Link>
+        </li>
+
+        {/* Passengers */}
+        <li className="nav-item">
+          <Link to="/passengers" className="nav-link">
+            <span className="icon-bg">
+              <i className="mdi mdi-account-multiple menu-icon"></i>
+            </span>
+            <span className="menu-title">Passengers</span>
+          </Link>
+        </li>
       </ul>
     </>
   );
