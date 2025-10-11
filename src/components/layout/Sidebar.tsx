@@ -47,35 +47,36 @@ function Sidebar() {
         </li> */}
 
         {/* Flight Management Section */}
-          <li className="nav-item">
+        <li className="nav-item">
           <a
             className="nav-link"
             data-toggle="collapse"
-            href=""
+            href="#flight-management"
             aria-expanded="false"
-            aria-controls="airports"
+            aria-controls="flight-management"
           >
             <span className="icon-bg">
               <i className="mdi mdi-airplane-takeoff menu-icon"></i>
             </span>
-            <span className="menu-title">Flight Management</span>
+            <span className="menu-title"> Manage Flight</span>
             <i className="menu-arrow"></i>
           </a>
           <div className="collapse" id="flight-management">
             <ul className="nav flex-column sub-menu">
               <li className="nav-item">
-                <Link to={'/flight-management'} className="nav-link" >
+                <Link to="/flight-management" className="nav-link">
                   ✈️ View Flights
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to={'/flight-add'} className="nav-link">
+                <Link to="/flight-add" className="nav-link">
                   ➕ Add New Flight
                 </Link>
               </li>
             </ul>
           </div>
         </li>
+
 
         {/* Airlines Section */}
         <li className="nav-item">
@@ -109,7 +110,7 @@ function Sidebar() {
 
 
         </li>
-         {/* Airport Section */}
+        {/* Airport Section */}
         <li className="nav-item">
           <a
             className="nav-link"
