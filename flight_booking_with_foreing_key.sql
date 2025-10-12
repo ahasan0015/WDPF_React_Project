@@ -12,7 +12,8 @@ CREATE TABLE Users (
     email VARCHAR(100) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     phone VARCHAR(20),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (role_id) REFERENCES Roles(role_id)
 );
 
 -- Airlines table
@@ -44,7 +45,11 @@ CREATE TABLE Flights (
     arrival_airport_id INT,
     departure_time DATETIME,
     arrival_time DATETIME,
-    flight_type_id INT
+    flight_type_id INT,
+    FOREIGN KEY (airline_id) REFERENCES Airlines(airline_id),
+    FOREIGN KEY (departure_airport_id) REFERENCES Airports(airport_id),
+    FOREIGN KEY (arrival_airport_id) REFERENCES Airports(airport_id),
+    FOREIGN KEY (flight_type_id) REFERENCES Flight_Types(flight_type_id)
 );
 
 -- Booking_Types table
@@ -66,7 +71,10 @@ CREATE TABLE Bookings (
     booking_type_id INT,
     booking_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     total_price DECIMAL(10,2),
-    status_id INT
+    status_id INT,
+    FOREIGN KEY (user_id) REFERENCES Users(user_id),
+    FOREIGN KEY (booking_type_id) REFERENCES Booking_Types(booking_type_id),
+    FOREIGN KEY (status_id) REFERENCES Booking_Status(status_id)
 );
 
 -- Seat_Classes table
@@ -81,7 +89,10 @@ CREATE TABLE Booking_Flights (
     booking_id INT,
     flight_id INT,
     seat_class_id INT,
-    price DECIMAL(10,2)
+    price DECIMAL(10,2),
+    FOREIGN KEY (booking_id) REFERENCES Bookings(booking_id),
+    FOREIGN KEY (flight_id) REFERENCES Flights(flight_id),
+    FOREIGN KEY (seat_class_id) REFERENCES Seat_Classes(seat_class_id)
 );
 
 -- Payment_Methods table
@@ -103,7 +114,10 @@ CREATE TABLE Payments (
     amount DECIMAL(10,2),
     payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     payment_method_id INT,
-    payment_status_id INT
+    payment_status_id INT,
+    FOREIGN KEY (booking_id) REFERENCES Bookings(booking_id),
+    FOREIGN KEY (payment_method_id) REFERENCES Payment_Methods(payment_method_id),
+    FOREIGN KEY (payment_status_id) REFERENCES Payment_Status(payment_status_id)
 );
 
 -- Passengers table
@@ -113,5 +127,6 @@ CREATE TABLE Passengers (
     name VARCHAR(100) NOT NULL,
     age INT,
     passport_number VARCHAR(50),
-    nationality VARCHAR(50)
+    nationality VARCHAR(50),
+    FOREIGN KEY (booking_id) REFERENCES Bookings(booking_id)
 );
