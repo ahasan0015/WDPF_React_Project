@@ -1,11 +1,11 @@
 export interface Role {
-  roleId: number,
-  roleName: string,
+  role_id: number,
+  role_name: string,
 }
 
 const roleDefault: Role = {
-  roleId: 0,
-  roleName: "",
+  role_id: 0,
+  role_name: "",
 };
 
 export default roleDefault;

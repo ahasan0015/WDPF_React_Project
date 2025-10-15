@@ -1,6 +1,27 @@
 import { Link } from "react-router-dom";
+import api from "../../../Config";
+import type { Role } from "../../../interfaces/role.interface";
+import { useEffect, useState } from "react";
 
 function ManageRoles() {
+  const [roles, setRoles] = useState<Role[]>([]);
+  useEffect(() =>{
+    document.title ="ManageRoles";
+    getRoles();
+  }, []);
+
+  const getRoles =()=>{
+    api.get(`roles`)
+    .then((res)=>{
+      console.log(res);
+      setRoles(res.data);
+    })
+    .catch((err) =>{
+      console.log(err);
+    });
+
+  };
+
   return (
     <>
       <div className="container-xxl flex-grow-1 container-p-y">
@@ -21,9 +42,12 @@ function ManageRoles() {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Admin</td>
+                {
+                  roles.map((item) =>(
+                  
+                <tr key={item.role_id}>
+                  <td>{item.role_id}</td>
+                  <td>{item.role_name}</td>
                   <td>
                     <div className="d-flex gap-1">
                       <Link to='' className="btn btn-icon btn-outline-info">
@@ -38,23 +62,7 @@ function ManageRoles() {
                     </div>
                   </td>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td>User</td>
-                  <td>
-                    <div className="d-flex gap-1">
-                      <Link to='' className="btn btn-icon btn-outline-info">
-                        <span className="tf-icons bx bx-search"></span>
-                      </Link>
-                      <Link to='' className="btn btn-icon btn-outline-primary">
-                        <span className="tf-icons bx bx-edit"></span>
-                      </Link>
-                      <button type="button" className="btn btn-icon btn-outline-danger">
-                        <span className="tf-icons bx bx-trash"></span>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
+                ))}
               </tbody>
             </table>
           </div>

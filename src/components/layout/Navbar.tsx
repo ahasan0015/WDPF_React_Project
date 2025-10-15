@@ -3,7 +3,7 @@ function Navbar(){
         <>
         <nav className="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div className="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-          <a className="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
+          <a className="navbar-brand brand-logo" href="index.html"><img src="assets/images/flight_main_logo.jpg" alt="logo" /></a>
           <a className="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
         </div>
         <div className="navbar-menu-wrapper d-flex align-items-stretch">
@@ -76,7 +76,7 @@ function Navbar(){
             <li className="nav-item nav-profile dropdown">
               <a className="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                 <div className="nav-profile-img">
-                  <img src="assets/images/faces/face28.png" alt="image"/>
+                  <img src="assets/images/faces/adminface.jpg" alt="image"/>
                 </div>
                 <div className="nav-profile-text">
                   <p className="mb-1 text-black">Henry Klein</p>
@@ -84,7 +84,7 @@ function Navbar(){
               </a>
               <div className="dropdown-menu navbar-dropdown dropdown-menu-right p-0 border-0 font-size-sm" aria-labelledby="profileDropdown" data-x-placement="bottom-end">
                 <div className="p-3 text-center bg-primary">
-                  <img className="img-avatar img-avatar48 img-avatar-thumb" src="assets/images/faces/face28.png" alt=""/>
+                  <img className="img-avatar img-avatar48 img-avatar-thumb" src="assets/images/faces/adminface.jpg" alt=""/>
                 </div>
                 <div className="p-2">
                   <h5 className="dropdown-header text-uppercase pl-2 text-dark">User Options</h5>

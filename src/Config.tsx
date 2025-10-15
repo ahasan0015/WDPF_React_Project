@@ -1,6 +1,7 @@
 import axios from "axios";
 // const baseApiUrl = "http://localhost/php-react-api/api/";
 const baseApiUrl = "http://localhost/php-react-api_flight_management/api/";
+
 const baseUrl ="http://localhost/php-react-api_flight_management/";
 export {baseUrl}
 
@@ -14,7 +15,7 @@ const api = axios.create({
 });
 //Add interceptor  to always attach the latest token
 api.interceptors.request.use(config =>{
-    const token = localStorage.getItem("bearer_token");
+    const token = localStorage.getItem(" ");
     if(token){
         config.headers.Authorization = `Bearer ${token}`;
     }
