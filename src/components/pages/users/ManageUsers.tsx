@@ -23,6 +23,20 @@ function ManageUsers() {
       });
   };
 
+   // 🔹 Delete ফাংশন (তোমার কাঠামো অনুযায়ী)
+  function handleDelete(id: any) {
+    if (!window.confirm("Are you sure you want to delete this user?")) return;
+
+    api.delete(`delete-user?id=${id}`)
+      .then((res) => {
+        console.log(res.data);
+        getUsers(); // আবার লিস্ট রিফ্রেশ করো
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   return (
     <div className="container-xxl flex-grow-1 container-p-y">
       <h4 className="fw-bold py-3 mb-4">
@@ -67,7 +81,10 @@ function ManageUsers() {
                       >
                         Edit
                       </Link>
-                      <button className="btn btn-outline-danger btn-sm">
+                      <button
+                        className="btn btn-outline-danger btn-sm"
+                        onClick={() => handleDelete(user.id)}
+                      >
                         Delete
                       </button>
                     </div>
