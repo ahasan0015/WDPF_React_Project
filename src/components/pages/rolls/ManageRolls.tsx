@@ -29,7 +29,7 @@ function ManageRoles() {
           <span className="text-muted fw-light">Roles / </span> Manage
         </h4>
 
-        <Link to="/roles/create" className="btn btn-primary mb-3">Add New Role</Link>
+        <Link  to="/roles/create" className="btn btn-primary mb-3">Add New Role</Link>
 
         <div className="card">
           <div className="table-responsive">

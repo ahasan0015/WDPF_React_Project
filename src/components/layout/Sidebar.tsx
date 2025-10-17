@@ -22,6 +22,15 @@ function Sidebar() {
             <span className="menu-title">Users</span>
           </Link>
         </li>
+        {/* Post */}
+        <li className="nav-item">
+          <Link to="/post" className="nav-link">
+            <span className="icon-bg">
+              <i className="mdi mdi-account menu-icon"></i>
+            </span>
+            <span className="menu-title">Post Test</span>
+          </Link>
+        </li>
 
         {/* Roles */}
         <li className="nav-item">

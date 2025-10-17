@@ -4,30 +4,39 @@ import { useEffect, useState } from "react";
 import type { User } from "../../../interfaces/user.interface";
 
 function ManageUsers() {
-  const [user, setUsers] = useState<User[]>([]);
- 
-  // const [userId, setUserId]=useState<number | undefined> (0);
+  const [users, setUsers] = useState<User[]>([]);
 
-  //first load all data form getUsers() api
+  // কম্পোনেন্ট লোড হলে ইউজার লিস্ট আনা
   useEffect(() => {
     document.title = "Manage Users";
-    getUserss();
+    getUsers();
   }, []);
 
-  const getUserss = () => {
+  // সব ইউজার আনা
+  const getUsers = () => {
     api
-      .get(`users`)
+      .get("users")
       .then((res) => {
-        console.log(res.data);
         setUsers(res.data);
       })
       .catch((err) => {
-        console.error(err);
+        console.error("Error fetching users:", err);
       });
   };
-  function handleDelete(id:any){
-    console.log(id +"confirm delete");
-  }
+
+  // ইউজার ডিলিট করা
+  const handleDelete = (user_id: number) => {
+    api
+      .delete(`delete-user?id=${user_id}`)
+      .then((res) => {
+        console.log("Deleted:", res.data);
+        // ডিলিট হওয়ার পর লিস্ট রিফ্রেশ করা
+        getUsers();
+      })
+      .catch((err) => {
+        console.error("Error deleting user:", err);
+      });
+  };
 
   return (
     <>
@@ -48,27 +57,39 @@ function ManageUsers() {
                   <th>ID</th>
                   <th>Name</th>
                   <th>Email</th>
-                  <th>Role</th>
+                  <th>Phone</th>
                   <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
-                {
-                user.map((item) => (
-                  <tr key={item.user_id}>
-                    <td>{item.name}</td>
-                    <td>{item.email}</td>
-                    <td>{item.password}</td>
-                    <td>{item.phone}</td>
+                {users.map((user) => (
+                  <tr key={user.user_id}>
+                    <td>{user.user_id}</td>
+                    <td>{user.name}</td>
+                    <td>{user.email}</td>
+                    <td>{user.phone}</td>
                     <td>
                       <div className="d-flex gap-1">
-                        <Link to="/users/1" className="btn btn-icon btn-outline-info">
+                        <Link
+                          to={`/users/${user.user_id}`}
+                          className="btn btn-icon btn-outline-info"
+                        >
                           <i className="bx bx-search"></i>
                         </Link>
-                        <Link to="/users/edit/1"className="btn btn-icon btn-outline-primary">
+                        <Link
+                          to={`/users/edit/${user.user_id}`}
+                          className="btn btn-icon btn-outline-primary"
+                        >
                           <i className="bx bx-edit"></i>
                         </Link>
-                        <button type="button" className="btn btn-icon btn-outline-danger" onClick={handleDelete}>
+                        <button
+                          type="button"
+                          className="btn btn-icon btn-outline-danger"
+                          onClick={() =>
+                            confirm("Are you sure to delete this?") &&
+                            handleDelete(user.user_id)
+                          }
+                        >
                           <i className="bx bx-trash"></i>
                         </button>
                       </div>

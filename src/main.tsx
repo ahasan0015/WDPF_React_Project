@@ -18,6 +18,10 @@ import ManageRoles from './components/pages/rolls/ManageRolls'
 import CreateRole from './components/pages/rolls/CreateRolls'
 import ViewAirports from './components/pages/airports/ViewAirports'
 import AddAirport from './components/pages/airports/AddAirports'
+import ManagePost from './components/pages/post/Managepost'
+import CreatePost from './components/pages/post/CreatePost'
+
+
 
 
 
@@ -36,7 +40,10 @@ const links = createBrowserRouter([
       {path:'/roles', element:<ManageRoles/>},
       {path:'/roles/create', element:<CreateRole/>},
       {path:'/view/airports', element:<ViewAirports/>},
-      {path:'/add/airports', element:<AddAirport/>}
+      {path:'/add/airports', element:<AddAirport/>},
+      {path:'/post', element:<ManagePost/>},
+      {path:'/create/post', element:<CreatePost/>}
+
 
 
 
