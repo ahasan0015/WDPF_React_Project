@@ -1,6 +1,6 @@
 export interface User {
-  user_id: number,
-  roleId?: number,
+  id: number,
+  role_id?: number,
   name: string,
   email: string,
   password: string,
@@ -9,8 +9,8 @@ export interface User {
 }
 
 const userDefault: User = {
-  user_id: 0,
-  roleId: 0,
+  id: 0,
+  role_id: 0,
   name: "",
   email: "",
   password: "",
